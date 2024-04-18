@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .border {
+    @apply border-borderColor border-stander rounded-md;
+  }
+  .header {
+    @apply text-textColor text-sm font-semibold;
+  }
+  .header2 {
+    @apply text-header2 font-medium text-textColor;
+  }
+  .dealPrice {
+    @apply bg-bgGray  text-textSecondColor mt-3 rounded-md font-semibold;
+  }
+  .subHeader {
+    @apply text-textSecondColor text-subHeader;
+  }
+  .clintSearch {
+    @apply border-stander border-secondColor px-2;
+  }
+  .searchIcon {
+    @apply absolute top-1/2 translate-y-[-30%] left-5;
+  }
+  .text-details {
+    @apply text-mainDetails font-medium text-textColor;
+  }
+  label{
+    @apply bg-[#6934111a] text-black p-2 rounded-md mx-1 text-header2
+  }
+}
+option{
+    width: auto !important;
+    height: auto !important;
+}
