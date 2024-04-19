@@ -70,14 +70,29 @@
     </section>
     <!-- The probability of the transaction being successful -->
     <section
-      class="flex justify-between items-center border bg-white py-5 mt-5"
+      class=" grid grid-cols-2 border bg-white  mt-5"
     >
-      <div class="flex items-center ps-2">
+      <div class="flex items-center col ps-2">
         <i
           class="fa-solid fa-question border-stander text-secondColor p-1 w-4 h-4 text-xs flex justify-center items-center border-secondColor rounded-full"
         ></i>
         <p class="header2 px-2">إحتمالية نجاح الصفقة</p>
         <img class="border p-1" src="/assets/icons/note.png" alt="" />
+      </div>
+      <div class="my-5 col">
+        <div class="bg-red-500 mb-4 relative">
+          <div [ngStyle]="{ 'right.%': 100 - value-6 }" class="relative w-fit ">
+            <div class="bg-black w-7 h-5 rounded-md text-white text-[8px] p-1">
+              {{ 100- value }} %        </div>
+              <i class="fa-solid fa-play traiangle"></i>
+            </div>
+          </div>
+          <div class="bg-white h-2 w-full relative z-30 rotate-2"></div>
+        <p-slider
+          [(ngModel)]="value"
+          styleClass="w-full bg-secondColor "
+          class="relative z-10"
+        ></p-slider>
       </div>
     </section>
 
@@ -107,27 +122,18 @@
             optionLabel="name"
             [showClear]="false"
             class="w-full"
-        
           >
-            <ng-template   pTemplate="selectedItem" let-selectedOption>
+            <ng-template pTemplate="selectedItem" let-selectedOption>
               <div
-                class="flex align-items-center  items-center py-3 ps-1 gap-x-2"
+                class="flex align-items-center items-center py-3 ps-1 gap-x-2"
               >
-                <img
-                  [src]="selectedOption.image"
-              
-                  style="width: 20px"
-                />
+                <img [src]="selectedOption.image" style="width: 20px" />
                 <div class="text-details">{{ selectedOption.name }}</div>
               </div>
             </ng-template>
             <ng-template let-source pTemplate="item">
               <div class="flex align-items-center items-center py-3 ps-1 gap-2">
-                <img
-                  [src]="source.image"
-     
-                  style="width: 20px"
-                />
+                <img [src]="source.image" style="width: 20px" />
                 <div class="text-details">{{ source.name }}</div>
               </div>
             </ng-template>
@@ -147,21 +153,13 @@
           >
             <ng-template pTemplate="selectedItem" let-selectedOption>
               <div class="flex align-items-center items-center p-3 gap-x-2">
-                <img
-                  [src]="selectedOption.image"
-              
-                  style="width: 20px"
-                />
+                <img [src]="selectedOption.image" style="width: 20px" />
                 <div class="text-details">{{ selectedOption.name }}</div>
               </div>
             </ng-template>
             <ng-template let-project pTemplate="item">
               <div class="flex align-items-center items-center p-3 gap-2">
-                <img
-                  [src]="project.image"
-                
-                  style="width: 20px"
-                />
+                <img [src]="project.image" style="width: 20px" />
                 <div class="text-details">{{ project.name }}</div>
               </div>
             </ng-template>
@@ -179,7 +177,9 @@
           [style.background-color]="tag.bgColor"
           >{{ tag.text }}</label
         >
-        <label *ngIf="tags.length > 2" class="" for="">+3</label>
+        <label *ngIf="tags.length > 2" class="" for=""
+          >+{{ tags.length - 3 }}</label
+        >
         <label
           *ngIf="tags.length > 2"
           class="bg-transparent border-r-2 border-borderColor rounded-none ms-2"
@@ -230,9 +230,6 @@
       ></i>
     </button>
   </div>
-  <div class="my-5">
-    <input type="text" pInputText [(ngModel)]="value" class="p-3 rounded-md bg-black w-10 text-white h-10" style="position: relative; z-index: 1;" />
-    <p-slider [(ngModel)]="value" styleClass="w-full bg-black h-26! mt-10" class="relative z-10 h-26!"></p-slider>
-</div>
+
 
 </body>

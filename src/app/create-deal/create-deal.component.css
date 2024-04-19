@@ -27,15 +27,44 @@
   .text-details {
     @apply text-mainDetails font-medium text-textColor;
   }
-  label{
-    @apply  p-2 rounded-md mx-1 text-header2
+  label {
+    @apply p-2 rounded-md mx-1 text-header2;
   }
+  :host::ng-deep .p-slider .p-slider-range {
+    @apply bg-bgGray
+   }
 }
 
+:host::ng-deep .p-slider-horizontal .p-slider-range {
+  height: 10.5px !important;
+  
+}
+:host::ng-deep .p-slider.p-slider-horizontal {
+  height: 10.5px !important;
+}
+:host::ng-deep .p-slider-horizontal .p-slider-handle {
+  transform: translateY(-50%)!important;
+  z-index: 100!important;
+  background-color: blue;
+}
 
+.handelShape{
 
+}
 
-option{
-    width: auto !important;
-    height: auto !important;
+.traiangle{
+  position: absolute;
+  transform: rotate(90deg) ;
+  color: black;
+
+  top: 75%;
+  left: 27%;
+  display: inline;
+  
+  
+}
+
+option {
+  width: auto !important;
+  height: auto !important;
 }

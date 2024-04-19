@@ -140,5 +140,25 @@ export class CreateDealComponent implements OnInit {
       bgColor: this.getRandomColor.bgColor,
       text: 'صفقة جديدة',
     },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
   ];
 }
