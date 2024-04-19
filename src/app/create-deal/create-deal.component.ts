@@ -12,7 +12,7 @@ import { Tags } from '../interfaces/tags';
 import { DropdownModule } from 'primeng/dropdown';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { DialogModule } from 'primeng/dialog';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -32,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileUploadModule,
     CommonModule,
     DropdownModule,
+    DialogModule
   ],
   templateUrl: './create-deal.component.html',
   styleUrl: './create-deal.component.css',
@@ -43,7 +44,9 @@ export class CreateDealComponent implements OnInit {
   selectedsource!: { name: string };
   selectedProject!: { name: string };
   value: number = 50;
+  displayDialog:boolean=true;
 
+  
   ngOnInit() {
     this.sourcies = [
       {

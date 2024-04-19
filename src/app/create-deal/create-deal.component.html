@@ -1,238 +1,167 @@
-<body class="bg-gray-100 rounded-lg border-add border-white">
-  <!-- Deal Tile -->
-  <header class="flex justify-between bg-white p-4">
-    <div class="flex items-center">
-      <img
-        class="bg-secondColor p-1 rounded-md"
-        src="/assets/icons/note-2.png"
-        alt=""
-      />
-      <h1 class="header ms-1">إنشاء صفقة جديدة</h1>
-    </div>
-    <i class="fa-solid bg-mainColor p-1 rounded-md fa-xmark"></i>
-  </header>
-  <div class="container px-3">
-    <section class="flex items-center">
-      <input
-        class="border header w-3/4 py-2 px-2 my-4"
-        type="text"
-        [value]="dealName"
-      />
-      <img class="p-2 border ms-3" src="/assets/icons/Vector.png" alt="" />
-    </section>
+<p-dialog header="إنشاء صفقة جديدة" [(visible)]="displayDialog" [modal]="true"  >
 
-    <!-- deal price and clint search -->
-    <section class="grid grid-cols-2 gap-4">
-      <!-- Clint search -->
-      <div
-        class="border-secondColor bg-sky border-dashed border-stander rounded-md p-3"
-      >
-        <div class="flex">
-          <img
-            class="p-2 rounded-md bg-[#596c9433]"
-            src="/assets/icons/profile-2user.png"
-            alt=""
-          />
-          <div class="ms-3">
-            <h2 class="header2">حدد العميل</h2>
-            <p class="subHeader">يرجي البحث عن العميل لإختياره</p>
+  <div class="bg-gray-100 rounded-lg border-add border-white">
+    <!-- Deal Tile -->
+    <header class="flex justify-between bg-white p-4">
+      <div class="flex items-center">
+        <img class="bg-secondColor p-1 rounded-md" src="/assets/icons/note-2.png" alt="" />
+        <h1 class="header ms-1">إنشاء صفقة جديدة</h1>
+      </div>
+      <i class="fa-solid bg-mainColor p-1 rounded-md fa-xmark"></i>
+    </header>
+    <div class="container px-3">
+      <section class="flex items-center">
+        <input class="border header w-3/4 py-2 px-2 my-4" type="text" [value]="dealName" />
+        <img class="p-2 border ms-3" src="/assets/icons/Vector.png" alt="" />
+      </section>
+
+      <!-- deal price and clint search -->
+      <section class="grid grid-cols-2 gap-4">
+        <!-- Clint search -->
+        <div class="border-secondColor bg-sky border-dashed border-stander rounded-md p-3">
+          <div class="flex">
+            <img class="p-2 rounded-md bg-[#596c9433]" src="/assets/icons/profile-2user.png" alt="" />
+            <div class="ms-3">
+              <h2 class="header2">حدد العميل</h2>
+              <p class="subHeader">يرجي البحث عن العميل لإختياره</p>
+            </div>
+          </div>
+          <div class="relative mt-2">
+            <img class="absolute searchIcon" src="/assets/icons/search-normal.png" alt="" />
+            <input class="subHeader clintSearch py-2 rounded-md w-full"
+              placeholder="إبحث عن عميل : مثال اسم العميل , رقم الهاتف" type="text" />
           </div>
         </div>
-        <div class="relative mt-2">
-          <img
-            class="absolute searchIcon"
-            src="/assets/icons/search-normal.png"
-            alt=""
-          />
-          <input
-            class="subHeader clintSearch py-2 rounded-md w-full"
-            placeholder="إبحث عن عميل : مثال اسم العميل , رقم الهاتف"
-            type="text"
-          />
-        </div>
-      </div>
-      <!-- Deal Price -->
+        <!-- Deal Price -->
 
-      <div class="border bg-white p-3">
-        <div class="flex">
-          <img
-            class="p-2 rounded-md bg-[#596c9433]"
-            src="/assets/icons/wallet-minus.png"
-            alt=""
-          />
-          <div class="ms-3">
-            <h2 class="header2">سعر الصفقة</h2>
-            <p class="subHeader">سعر الصفقة هو المبلغ المدفوع شامل الضرائب</p>
+        <div class="border bg-white p-3">
+          <div class="flex">
+            <img class="p-2 rounded-md bg-[#596c9433]" src="/assets/icons/wallet-minus.png" alt="" />
+            <div class="ms-3">
+              <h2 class="header2">سعر الصفقة</h2>
+              <p class="subHeader">سعر الصفقة هو المبلغ المدفوع شامل الضرائب</p>
+            </div>
           </div>
+          <input class="dealPrice w-full text-center" value="500$" type="text" />
         </div>
-        <input class="dealPrice w-full text-center" value="500$" type="text" />
-      </div>
-    </section>
-    <!-- The probability of the transaction being successful -->
-    <section
-      class="flex justify-between items-center border bg-white py-5 mt-5"
-    >
-      <div class="flex items-center ps-2">
-        <i
-          class="fa-solid fa-question border-stander text-secondColor p-1 w-4 h-4 text-xs flex justify-center items-center border-secondColor rounded-full"
-        ></i>
-        <p class="header2 px-2">إحتمالية نجاح الصفقة</p>
-        <img class="border p-1" src="/assets/icons/note.png" alt="" />
-      </div>
-    </section>
-
-    <section class="grid grid-cols-3 mt-4 gap-3">
-      <!-- Transaction official -->
-
-      <div>
-        <p class="header2">مسئول الصفقة</p>
-        <div
-          class="flex justify-between p-2 mt-1 rounded-md bg-white items-center"
-        >
-          <div class="flex items-center">
-            <img class="pe-1" src="/assets/images/avatar.png" alt="" />
-            <p class="text-details">محمد غريب</p>
-          </div>
-          <img src="/assets/images/addAvatar.png" alt="" />
-        </div>
-      </div>
-      <!-- Source -->
-
-      <div>
-        <p class="header2">المصدر</p>
-        <div class="mt-1 flex justify-center">
-          <p-dropdown
-            [options]="sourcies"
-            [(ngModel)]="selectedsource"
-            optionLabel="name"
-            [showClear]="false"
-            class="w-full"
-        
-          >
-            <ng-template   pTemplate="selectedItem" let-selectedOption>
-              <div
-                class="flex align-items-center  items-center py-3 ps-1 gap-x-2"
-              >
-                <img
-                  [src]="selectedOption.image"
-              
-                  style="width: 20px"
-                />
-                <div class="text-details">{{ selectedOption.name }}</div>
-              </div>
-            </ng-template>
-            <ng-template let-source pTemplate="item">
-              <div class="flex align-items-center items-center py-3 ps-1 gap-2">
-                <img
-                  [src]="source.image"
-     
-                  style="width: 20px"
-                />
-                <div class="text-details">{{ source.name }}</div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-        </div>
-      </div>
-      <!-- Projects -->
-
-      <div>
-        <p class="header2">المشروع</p>
-        <div class="mt-1">
-          <p-dropdown
-            [options]="projects"
-            [(ngModel)]="selectedProject"
-            optionLabel="name"
-            [showClear]="false"
-          >
-            <ng-template pTemplate="selectedItem" let-selectedOption>
-              <div class="flex align-items-center items-center p-3 gap-x-2">
-                <img
-                  [src]="selectedOption.image"
-              
-                  style="width: 20px"
-                />
-                <div class="text-details">{{ selectedOption.name }}</div>
-              </div>
-            </ng-template>
-            <ng-template let-project pTemplate="item">
-              <div class="flex align-items-center items-center p-3 gap-2">
-                <img
-                  [src]="project.image"
-                
-                  style="width: 20px"
-                />
-                <div class="text-details">{{ project.name }}</div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-        </div>
-      </div>
-    </section>
-    <section class="mt-4">
-      <p class="header2">العلامات</p>
-      <div class="flex bg-white py-2 rounded-md mt-1">
-        <label
-          *ngFor="let tag of tags.slice(0, 3)"
-          [for]="tag.text"
-          [style.color]="tag.textColor"
-          [style.background-color]="tag.bgColor"
-          >{{ tag.text }}</label
-        >
-        <label *ngIf="tags.length > 2" class="" for="">+3</label>
-        <label
-          *ngIf="tags.length > 2"
-          class="bg-transparent border-r-2 border-borderColor rounded-none ms-2"
-          for=""
-          >{{ tags[3].text }}</label
-        >
-      </div>
-    </section>
-    <section class="mt-3 border bg-white">
-      <div class="flex border p-3 items-center">
-        <img src="/assets/icons/productVector.png" alt="" />
-        <h2 class="header mx-1">المنتجات</h2>
-        <p class="p-1 rounded-md text-subHeader text-textSecondColor bg-bgGray">
-          00
-        </p>
-      </div>
-      <div class="flex justify-center items-center p-3">
-        <img src="/assets/images/products.png" alt="" />
-        <div class="mx-3">
-          <p class="header2">لا يوجد منتجات</p>
-          <p class="subHeader">يرجي إضافة منتجات وإدارتها للصفقة الحالية</p>
-        </div>
-        <button class="bg-secondColor text-header2 text-white rounded-md p-2">
+      </section>
+      <!-- The probability of the transaction being successful -->
+      <section class="flex justify-between items-center border bg-white py-5 mt-5">
+        <div class="flex items-center ps-2">
           <i
-            class="fa-solid fa-plus border-add rounded-full mx-1 border-white p-1"
-          ></i
-          >اضافة منتج
-        </button>
-      </div>
-    </section>
+            class="fa-solid fa-question border-stander text-secondColor p-1 w-4 h-4 text-xs flex justify-center items-center border-secondColor rounded-full"></i>
+          <p class="header2 px-2">إحتمالية نجاح الصفقة</p>
+          <img class="border p-1" src="/assets/icons/note.png" alt="" />
+        </div>
+      </section>
 
-    <!-- additional information -->
-    <section class="bg-white p-3 border mt-3">
-      <h2 class="header">معلومات اضافية</h2>
-    </section>
-  </div>
-  <!-- add Deal -->
-  <div class="flex mt-3 justify-between p-3 bg-white">
-    <button class="p-2 bg-bgGray rounded-md flex items-center">
-      <img class="me-2" src="/assets/icons/signContract.png" alt="" />
-      توقيع العقد
-    </button>
-    <button
-      class="bg-secondColor px-2 text-header flex items-center text-white rounded-md"
-    >
-      اضافة الصفقة<i
-        class="fa-solid fa-angle-down border-r-2 ps-3 ms-3 h-full flex items-center border-white"
-      ></i>
-    </button>
-  </div>
-  <div class="my-5">
-    <input type="text" pInputText [(ngModel)]="value" class="p-3 rounded-md bg-black w-10 text-white h-10" style="position: relative; z-index: 1;" />
-    <p-slider [(ngModel)]="value" styleClass="w-full bg-black h-26! mt-10" class="relative z-10 h-26!"></p-slider>
-</div>
+      <section class="grid grid-cols-3 mt-4 gap-3">
+        <!-- Transaction official -->
 
-</body>
+        <div>
+          <p class="header2">مسئول الصفقة</p>
+          <div class="flex justify-between p-2 mt-1 rounded-md bg-white items-center">
+            <div class="flex items-center">
+              <img class="pe-1" src="/assets/images/avatar.png" alt="" />
+              <p class="text-details">محمد غريب</p>
+            </div>
+            <img src="/assets/images/addAvatar.png" alt="" />
+          </div>
+        </div>
+        <!-- Source -->
+
+        <div>
+          <p class="header2">المصدر</p>
+          <div class="mt-1 flex justify-center">
+            <p-dropdown [options]="sourcies" [(ngModel)]="selectedsource" optionLabel="name" [showClear]="false"
+              class="w-full">
+              <ng-template pTemplate="selectedItem" let-selectedOption>
+                <div class="flex align-items-center  items-center py-3 ps-1 gap-x-2">
+                  <img [src]="selectedOption.image" style="width: 20px" />
+                  <div class="text-details">{{ selectedOption.name }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-source pTemplate="item">
+                <div class="flex align-items-center items-center py-3 ps-1 gap-2">
+                  <img [src]="source.image" style="width: 20px" />
+                  <div class="text-details">{{ source.name }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+        </div>
+        <!-- Projects -->
+
+        <div>
+          <p class="header2">المشروع</p>
+          <div class="mt-1">
+            <p-dropdown [options]="projects" [(ngModel)]="selectedProject" optionLabel="name" [showClear]="false">
+              <ng-template pTemplate="selectedItem" let-selectedOption>
+                <div class="flex align-items-center items-center p-3 gap-x-2">
+                  <img [src]="selectedOption.image" style="width: 20px" />
+                  <div class="text-details">{{ selectedOption.name }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-project pTemplate="item">
+                <div class="flex align-items-center items-center p-3 gap-2">
+                  <img [src]="project.image" style="width: 20px" />
+                  <div class="text-details">{{ project.name }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+        </div>
+      </section>
+      <section class="mt-4">
+        <p class="header2">العلامات</p>
+        <div class="flex bg-white py-2 rounded-md mt-1">
+          <label *ngFor="let tag of tags.slice(0, 3)" [for]="tag.text" [style.color]="tag.textColor"
+            [style.background-color]="tag.bgColor">{{ tag.text }}</label>
+          <label *ngIf="tags.length > 2" class="" for="">+3</label>
+          <label *ngIf="tags.length > 2" class="bg-transparent border-r-2 border-borderColor rounded-none ms-2"
+            for="">{{ tags[3].text }}</label>
+        </div>
+      </section>
+      <section class="mt-3 border bg-white">
+        <div class="flex border p-3 items-center">
+          <img src="/assets/icons/productVector.png" alt="" />
+          <h2 class="header mx-1">المنتجات</h2>
+          <p class="p-1 rounded-md text-subHeader text-textSecondColor bg-bgGray">
+            00
+          </p>
+        </div>
+        <div class="flex justify-center items-center p-3">
+          <img src="/assets/images/products.png" alt="" />
+          <div class="mx-3">
+            <p class="header2">لا يوجد منتجات</p>
+            <p class="subHeader">يرجي إضافة منتجات وإدارتها للصفقة الحالية</p>
+          </div>
+          <button class="bg-secondColor text-header2 text-white rounded-md p-2">
+            <i class="fa-solid fa-plus border-add rounded-full mx-1 border-white p-1"></i>اضافة منتج
+          </button>
+        </div>
+      </section>
+
+      <!-- additional information -->
+      <section class="bg-white p-3 border mt-3">
+        <h2 class="header">معلومات اضافية</h2>
+      </section>
+    </div>
+    <!-- add Deal -->
+    <div class="flex mt-3 justify-between p-3 bg-white">
+      <button class="p-2 bg-bgGray rounded-md flex items-center">
+        <img class="me-2" src="/assets/icons/signContract.png" alt="" />
+        توقيع العقد
+      </button>
+      <button class="bg-secondColor px-2 text-header flex items-center text-white rounded-md">
+        اضافة الصفقة<i class="fa-solid fa-angle-down border-r-2 ps-3 ms-3 h-full flex items-center border-white"></i>
+      </button>
+    </div>
+    <div class="my-5">
+      <input type="text" pInputText [(ngModel)]="value" class="p-3 rounded-md bg-black w-10 text-white h-10"
+        style="position: relative; z-index: 1;" />
+      <p-slider [(ngModel)]="value" styleClass="w-full bg-black h-26! mt-10" class="relative z-10 h-26!"></p-slider>
+    </div>
+
+  </div>
+</p-dialog>
