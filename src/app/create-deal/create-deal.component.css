@@ -28,9 +28,13 @@
     @apply text-mainDetails font-medium text-textColor;
   }
   label{
-    @apply bg-[#6934111a] text-black p-2 rounded-md mx-1 text-header2
+    @apply  p-2 rounded-md mx-1 text-header2
   }
 }
+
+
+
+
 option{
     width: auto !important;
     height: auto !important;

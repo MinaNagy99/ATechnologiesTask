@@ -7,6 +7,17 @@ import { SidebarModule } from 'primeng/sidebar';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
+import { CommonModule } from '@angular/common';
+import { Tags } from '../interfaces/tags';
+import { DropdownModule } from 'primeng/dropdown';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @Component({
   selector: 'app-create-deal',
   standalone: true,
@@ -19,90 +30,115 @@ import { FileUploadModule } from 'primeng/fileupload';
     ReactiveFormsModule,
     FormsModule,
     FileUploadModule,
+    CommonModule,
+    DropdownModule,
   ],
   templateUrl: './create-deal.component.html',
   styleUrl: './create-deal.component.css',
 })
 export class CreateDealComponent implements OnInit {
-  dealName: string = 'شراء / تأجير شقة سكنية في منطقة التجمع الأول';
-  countries: any[] | undefined;
+  sourcies: { name: string; image: string }[] = [];
+  projects: { name: string; image: string }[] = [];
 
-  selectedCity: any;
+  selectedsource!: { name: string };
+  selectedProject!: { name: string };
+  value: number = 50;
 
   ngOnInit() {
-    this.countries = [
+    this.sourcies = [
       {
-        name: 'Australia',
-        code: 'AU',
-        states: [
-          {
-            name: 'New South Wales',
-            cities: [
-              { cname: 'Sydney', code: 'A-SY' },
-              { cname: 'Newcastle', code: 'A-NE' },
-              { cname: 'Wollongong', code: 'A-WO' },
-            ],
-          },
-          {
-            name: 'Queensland',
-            cities: [
-              { cname: 'Brisbane', code: 'A-BR' },
-              { cname: 'Townsville', code: 'A-TO' },
-            ],
-          },
-        ],
+        name: 'منصة الانستيجرام',
+        image: '/assets/icons/telegram.png',
       },
       {
-        name: 'Canada',
-        code: 'CA',
-        states: [
-          {
-            name: 'Quebec',
-            cities: [
-              { cname: 'Montreal', code: 'C-MO' },
-              { cname: 'Quebec City', code: 'C-QU' },
-            ],
-          },
-          {
-            name: 'Ontario',
-            cities: [
-              { cname: 'Ottawa', code: 'C-OT' },
-              { cname: 'Toronto', code: 'C-TO' },
-            ],
-          },
-        ],
+        name: 'منصة الفيسبوك',
+        image: '/assets/icons/facebook.png',
       },
       {
-        name: 'United States',
-        code: 'US',
-        states: [
-          {
-            name: 'California',
-            cities: [
-              { cname: 'Los Angeles', code: 'US-LA' },
-              { cname: 'San Diego', code: 'US-SD' },
-              { cname: 'San Francisco', code: 'US-SF' },
-            ],
-          },
-          {
-            name: 'Florida',
-            cities: [
-              { cname: 'Jacksonville', code: 'US-JA' },
-              { cname: 'Miami', code: 'US-MI' },
-              { cname: 'Tampa', code: 'US-TA' },
-              { cname: 'Orlando', code: 'US-OR' },
-            ],
-          },
-          {
-            name: 'Texas',
-            cities: [
-              { cname: 'Austin', code: 'US-AU' },
-              { cname: 'Dallas', code: 'US-DA' },
-              { cname: 'Houston', code: 'US-HO' },
-            ],
-          },
-        ],
+        name: 'منصة التليجرام',
+        image: '/assets/icons/instagram.png',
       },
     ];
+    this.projects = [
+      {
+        name: 'فيكتوريا دي ميرو',
+        image: '/assets/icons/project1.png',
+      },
+      {
+        name: 'كايرو ستوديو',
+        image: '/assets/icons/project2.png',
+      },
+      {
+        name: 'فالا دوت فان',
+        image: '/assets/icons/project3.png',
+      },
+    ];
+    if (this.sourcies.length > 0) {
+      this.selectedsource = this.sourcies[0];
+    }
+    if (this.projects.length > 0) {
+      this.selectedProject = this.projects[0];
+    }
   }
+  dealName: string = 'شراء / تأجير شقة سكنية في منطقة التجمع الأول';
+
+  get getRandomColor(): { bgColor: string; textColor: string } {
+    // Generate random values for red, green, and blue components
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    // Construct the color string in hexadecimal format
+    const bgColor =
+      '#' +
+      red.toString(16).padStart(2, '0') +
+      green.toString(16).padStart(2, '0') +
+      blue.toString(16).padStart(2, '0');
+
+    // Adjust the color to increase the black slightly
+    const adjustedRed = Math.min(255, red + 15);
+    const adjustedGreen = Math.min(255, green + 15);
+    const adjustedBlue = Math.min(255, blue + 15);
+
+    const textColor =
+      '#' +
+      adjustedRed.toString(16).padStart(2, '0') +
+      adjustedGreen.toString(16).padStart(2, '0') +
+      adjustedBlue.toString(16).padStart(2, '0');
+
+    return { bgColor, textColor };
+  }
+
+  tags: Tags[] = [
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+    {
+      textColor: this.getRandomColor.textColor,
+      bgColor: this.getRandomColor.bgColor,
+      text: 'صفقة جديدة',
+    },
+  ];
 }

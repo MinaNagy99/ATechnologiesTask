@@ -99,48 +99,100 @@
       <!-- Source -->
 
       <div>
-        <p class="header2">مسئول الصفقة</p>
-        <div
-          class="flex justify-between p-2 mt-1 rounded-md bg-white items-center"
-        >
-          <div class="flex items-center">
-            <img class="pe-1" src="/assets/images/avatar.png" alt="" />
-            <p class="text-details">محمد غريب</p>
-          </div>
-          <img src="/assets/images/addAvatar.png" alt="" />
+        <p class="header2">المصدر</p>
+        <div class="mt-1 flex justify-center">
+          <p-dropdown
+            [options]="sourcies"
+            [(ngModel)]="selectedsource"
+            optionLabel="name"
+            [showClear]="false"
+            class="w-full"
+        
+          >
+            <ng-template   pTemplate="selectedItem" let-selectedOption>
+              <div
+                class="flex align-items-center  items-center py-3 ps-1 gap-x-2"
+              >
+                <img
+                  [src]="selectedOption.image"
+              
+                  style="width: 20px"
+                />
+                <div class="text-details">{{ selectedOption.name }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-source pTemplate="item">
+              <div class="flex align-items-center items-center py-3 ps-1 gap-2">
+                <img
+                  [src]="source.image"
+     
+                  style="width: 20px"
+                />
+                <div class="text-details">{{ source.name }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
         </div>
       </div>
+      <!-- Projects -->
+
       <div>
-        <p class="header2">مسئول الصفقة</p>
-        <div
-          class="flex justify-between p-2 mt-1 rounded-md bg-white items-center"
-        >
-          <div class="flex items-center">
-            <img class="pe-1" src="/assets/images/avatar.png" alt="" />
-            <p class="text-details">محمد غريب</p>
-          </div>
-          <img src="/assets/images/addAvatar.png" alt="" />
+        <p class="header2">المشروع</p>
+        <div class="mt-1">
+          <p-dropdown
+            [options]="projects"
+            [(ngModel)]="selectedProject"
+            optionLabel="name"
+            [showClear]="false"
+          >
+            <ng-template pTemplate="selectedItem" let-selectedOption>
+              <div class="flex align-items-center items-center p-3 gap-x-2">
+                <img
+                  [src]="selectedOption.image"
+              
+                  style="width: 20px"
+                />
+                <div class="text-details">{{ selectedOption.name }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-project pTemplate="item">
+              <div class="flex align-items-center items-center p-3 gap-2">
+                <img
+                  [src]="project.image"
+                
+                  style="width: 20px"
+                />
+                <div class="text-details">{{ project.name }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
         </div>
       </div>
     </section>
     <section class="mt-4">
       <p class="header2">العلامات</p>
       <div class="flex bg-white py-2 rounded-md mt-1">
-        <label for="">صفقة جديدة</label>
-        <label for="">صفقة جديدة</label>
-        <label for="">صفقة جديدة</label>
-        <label for="">صفقة جديدة</label>
-        <label for="">صفقة جديدة</label>
+        <label
+          *ngFor="let tag of tags.slice(0, 3)"
+          [for]="tag.text"
+          [style.color]="tag.textColor"
+          [style.background-color]="tag.bgColor"
+          >{{ tag.text }}</label
+        >
+        <label *ngIf="tags.length > 2" class="" for="">+3</label>
+        <label
+          *ngIf="tags.length > 2"
+          class="bg-transparent border-r-2 border-borderColor rounded-none ms-2"
+          for=""
+          >{{ tags[3].text }}</label
+        >
       </div>
     </section>
-
     <section class="mt-3 border bg-white">
       <div class="flex border p-3 items-center">
         <img src="/assets/icons/productVector.png" alt="" />
         <h2 class="header mx-1">المنتجات</h2>
-        <p
-          class="p-1 rounded-md text-subHeader text-textSecondColor bg-bgGray"
-        >
+        <p class="p-1 rounded-md text-subHeader text-textSecondColor bg-bgGray">
           00
         </p>
       </div>
@@ -165,17 +217,22 @@
     </section>
   </div>
   <!-- add Deal -->
-  <div class="flex mt-3 justify-between p-3  bg-white">
+  <div class="flex mt-3 justify-between p-3 bg-white">
     <button class="p-2 bg-bgGray rounded-md flex items-center">
       <img class="me-2" src="/assets/icons/signContract.png" alt="" />
       توقيع العقد
     </button>
-    <button class="bg-secondColor px-2 text-header flex items-center text-white rounded-md ">
-      اضافة الصفقة<i
-      class="fa-solid fa-angle-down border-r-2 ps-3 ms-3 h-full flex items-center  border-white "
-    ></i
+    <button
+      class="bg-secondColor px-2 text-header flex items-center text-white rounded-md"
     >
+      اضافة الصفقة<i
+        class="fa-solid fa-angle-down border-r-2 ps-3 ms-3 h-full flex items-center border-white"
+      ></i>
     </button>
-  
   </div>
+  <div class="my-5">
+    <input type="text" pInputText [(ngModel)]="value" class="p-3 rounded-md bg-black w-10 text-white h-10" style="position: relative; z-index: 1;" />
+    <p-slider [(ngModel)]="value" styleClass="w-full bg-black h-26! mt-10" class="relative z-10 h-26!"></p-slider>
+</div>
+
 </body>
