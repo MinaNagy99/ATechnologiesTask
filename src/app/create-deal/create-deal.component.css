@@ -47,10 +47,12 @@
   z-index: 100!important;
   background-color: blue;
 }
-
-.handelShape{
-
+:host::ng-deep .p-dropdown{
+  width: 100% !important;
 }
+
+
+
 
 .traiangle{
   position: absolute;
